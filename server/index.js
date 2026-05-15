@@ -110,7 +110,7 @@ const run = async () => {
             res.send(result)
         })
 
-        app.delete('/booking/:id', async (req,res) => {
+        app.delete('/booking/:id',verify , async (req,res) => {
             const {id} = req.params
             const result = await booking.deleteOne({_id: new ObjectId(id)})
             res.send(result)

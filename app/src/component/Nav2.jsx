@@ -11,6 +11,7 @@ const Nav2 = () => {
     const p = usePathname()
     const { data: session } = authClient.useSession()
     const user = session?.user
+    console.log(user)
 
     return (
         <div className='font-semibold flex items-center gap-5'>
