@@ -21,7 +21,7 @@ const BookingBtn = ({p,id}) => {
             imageUrl: p.imageUrl,
             price: p.price,
         }
-        await bookingPost(b)
+        await bookingPost(b,t)
     }
 
     return (
