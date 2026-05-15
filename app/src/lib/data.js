@@ -3,10 +3,10 @@ export const getData = async () => {
     return res.json()
 }
 
-export const getId = async (id) => {
+export const getId = async (id,token) => {
     const res = await fetch(`http://localhost:5000/destination/${id}`,{
         headers:{
-            authorization: "logged in"
+            authorization: `Bearer ${token}`,
         }
     })
     return res.json()

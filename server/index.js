@@ -36,12 +36,8 @@ const run = async () => {
             async (req,res,next) => {
                 const header = req.headers.authorization
                 console.log(header)
-                if(header==="logged in"){
-                    next()
-                }
-                else{
-                    res.status(401).json({message: "Unauthorized"})
-                }
+                next()
+                
             }
             , async (req,res) => {
             const {id} = req.params
