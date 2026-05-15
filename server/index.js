@@ -93,7 +93,7 @@ const run = async () => {
             res.send(result)
         })
 
-        app.post('/booking', async (req,res) => {
+        app.post('/booking',verify, async (req,res) => {
             const newData = req.body
             const result = await booking.insertOne(newData)
             res.json(result)
