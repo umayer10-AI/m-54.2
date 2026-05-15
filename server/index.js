@@ -19,6 +19,13 @@ const client = new MongoClient(uri, {
     }
 });
 
+const verify = async (req,res,next) => {
+    const header = req.headers.authorization
+    const token = header.split(' ')[1]
+    console.log(token)
+    next()
+}
+
 const run = async () => {
     try {
         await client.connect();
@@ -32,14 +39,7 @@ const run = async () => {
             res.send(result)
         })
 
-        app.get('/destination/:id',
-            async (req,res,next) => {
-                const header = req.headers.authorization
-                console.log(header)
-                next()
-                
-            }
-            , async (req,res) => {
+        app.get('/destination/:id',verify , async (req,res) => {
             const {id} = req.params
             const result = await userCollection.findOne({_id: new ObjectId(id)})
             res.json(result)
