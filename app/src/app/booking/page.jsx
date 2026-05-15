@@ -1,10 +1,17 @@
 import Booking from '@/component/Booking';
+import { auth } from '@/lib/auth';
 import { bookingAllData } from '@/lib/data';
+import { headers } from 'next/headers';
 import React from 'react';
 
 const page = async () => {
 
-    const data = await bookingAllData()
+    const {token} = await auth.api.getToken({
+        headers: await headers()
+    })
+    console.log(token)
+
+    const data = await bookingAllData(token)
 
     return (
         <div>
